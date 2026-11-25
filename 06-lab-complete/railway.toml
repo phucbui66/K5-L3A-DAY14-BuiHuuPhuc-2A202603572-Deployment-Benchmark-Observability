@@ -1,4 +1,9 @@
 # ============================================================
+[build]
+builder = "DOCKERFILE"
+
+[deploy]
+healthcheckPath = "/health"
 # TODO (tiêu chí 12): cấu hình deploy Railway
 #   [build]  builder = "DOCKERFILE"
 #   [deploy] healthcheckPath = "/health"

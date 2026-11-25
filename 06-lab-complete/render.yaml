@@ -1,4 +1,18 @@
 # ============================================================
+services:
+  - type: web
+    name: day14-agent
+    runtime: docker
+    healthCheckPath: /health
+    envVars:
+      - key: AGENT_API_KEY
+        generateValue: true
+      - key: REDIS_URL
+        sync: false
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "10"
+      - key: DAILY_BUDGET_USD
+        value: "1.0"
 # TODO (tiêu chí 12): cấu hình deploy Render (Blueprint) — có thể dùng thay railway.toml
 #   services:
 #     - type: web, runtime: docker, healthCheckPath: /health
