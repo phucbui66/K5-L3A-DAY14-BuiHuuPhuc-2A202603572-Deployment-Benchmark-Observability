@@ -31,7 +31,7 @@ Compose 2.4: client → Nginx → agent; agent được cấu hình địa chỉ
 
 ## Part 3 — Cloud
 
-Railway dùng TOML khai báo Docker builder và healthcheck; Render dùng YAML khai báo web service và các biến môi trường. Cloud Build có thể build image, đưa lên registry rồi triển khai service Cloud Run với cấu hình trong service manifest. URL và kết quả deploy: **chưa thực hiện**.
+Railway dùng TOML khai báo Docker builder và healthcheck; Render dùng YAML khai báo web service và các biến môi trường. Cloud Build chạy test, build và push image, rồi triển khai Cloud Run; service manifest mô tả tài nguyên, scaling, secrets và probes. Đã deploy Part 6 lên Render và kiểm tra /health 200, /ready 200, POST /ask thiếu key 401, có key hợp lệ 200. URL và bằng chứng nằm trong [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Part 4 — API security
 
@@ -102,3 +102,4 @@ Docker image đo được 238 MB; Docker stop exit code 0 sau 0,9 giây. SIGTERM
 - Yêu cầu: đọc hướng dẫn và hoàn thành bài tập. Codex đã viết phần triển khai Part 6, bổ sung metric, knowledge base và CI; các ghi chú này cũng do Codex soạn.
 - Sau yêu cầu tiếp tục, Codex chuẩn bị Python và Redis tạm thời, chạy kiểm tra --skip-docker, TestClient, curl, eval và load test; số liệu được ghi từ output và JSON. Người nộp cần đọc, hiểu, kiểm tra lại và bổ sung bằng chứng Docker/cloud trước khi nộp.
 - Lần tiếp theo Codex cài WSL2, Docker Desktop, Ubuntu và Redis; sửa Dockerfile của stack quan sát để Python tìm được thư viện; chạy script chấm đầy đủ, Locust, Prometheus và Jaeger. Các số đo, ảnh và trạng thái đều lấy từ lần chạy thực tế.
+- Codex kết nối Render, sửa root directory của service, cấu hình Redis và key, deploy và kiểm tra HTTP; người nộp cần tự đọc, hiểu và kiểm tra kết quả, bổ sung phần tự sửa/tự kiểm tra cá nhân nếu có.
